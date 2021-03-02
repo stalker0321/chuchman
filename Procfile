@@ -1,0 +1,1 @@
+web: gunicorn chuchman.wsgi --log-file -
