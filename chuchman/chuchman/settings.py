@@ -29,7 +29,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
-django_heroku.settings(locals())
+
 
 # Application definition
 
@@ -141,3 +141,5 @@ TEMPLATES_URL = '/templates/'
 TEMPLATESFILES_DIRS = [
     os.path.join(BASE_DIR, "templates"),
 ]
+
+django_heroku.settings(locals())
