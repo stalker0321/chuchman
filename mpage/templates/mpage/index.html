@@ -1,0 +1,396 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Коронавирус-инфо</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery-3.5.1.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="header">
+
+            <div class="header-img">
+                <img src="{% static 'img/main-bg.jpg' %}" alt="" class="virus">
+                <div class="black"></div>
+            </div>
+            <div class="header-lang">
+                <div class="lang-block">
+                    <div class="lang-text">
+                        <a class="lang-text-p" href="/ua">Українська</a>
+                    </div>
+                    <div class="lang-text">
+                        <a class="lang-text-p" href="https://chuchman.herokuapp.com">Русский</a>
+                    </div>
+                    <div class="lang-text">
+                        <a class="lang-text-p" href="/en">English</a>
+                    </div>
+                </div>
+            </div>
+            <div class="header-text">
+                <h1>Коронавирус-инфо<br /></h1>
+            </div>
+            <!--
+            <div class="header-age">
+                <div class="container">
+                    <div class="row">
+                        <div class="col"><button class="header-age-btn">Для детей</button></div>
+                        <div class="col"><button class="header-age-btn">Для подростков</button></div>
+                        <div class="col"><button class="header-age-btn">Для взрослых</button></div>
+                    </div>
+                </div>
+            </div>
+-->
+        </div>
+        <div class="section-1">
+            <div class="container">
+                <div class="menu-text">
+                    <h1>Содержание</h1>
+                    <div class="menu-content">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="menu-block scr" data-to=".section-2">
+                                    <div class="menu-block-wrap">
+                                        <img src="{% static 'img/menu-1.svg' %}" alt="">
+                                        <h4>Статистика</h4>
+                                        <p>Статистика заболеваний коронавирусом в мире и Украине</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="menu-block scr" data-to=".section-3">
+                                    <div class="menu-block-wrap">
+                                        <img src="{% static 'img/menu-2.svg' %}" alt="">
+                                        <h4>История коронавируса</h4>
+                                        <p>Как зарождался и распространялся коронавирус</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="menu-block scr" data-to=".section-4">
+                                    <div class="menu-block-wrap">
+                                        <img src="{% static 'img/menu-3.svg' %}" alt="">
+                                        <h4>Пути передачи</h4>
+                                        <p>Как можно заразиться коронавирусом</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="menu-block scr" data-to=".section-5">
+                                    <div class="menu-block-wrap">
+                                        <img src="{% static 'img/menu-4.svg' %}" alt="">
+                                        <h4>Симптомы</h4>
+                                        <p>Симптоматика коронавирусной инфекции</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="menu-block scr" data-to=".section-6">
+                                    <div class="menu-block-wrap">
+                                        <img src="{% static 'img/menu-5.svg' %}" alt="">
+                                        <h4>Опасность коронавируса</h4>
+                                        <p>К чему приводят осложнения коронавируса</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-sm-6 col-12">
+                                <div class="menu-block scr" data-to=".section-7">
+                                    <div class="menu-block-wrap">
+                                        <img src="{% static 'img/menu-6.svg' %}" alt="">
+                                        <h4>Профилактика</h4>
+                                        <p>Как обезопасить себя от заражения коронавирусом</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-2">
+            <div class="container">
+                <div class="stats">
+                    <div class="stats-text">
+                        <h1>Статистика заболеваемости в Украине</h1>
+                    </div>
+                    <div class="stats-content">
+                        <div class="row">
+                            <div class="col-lg-4 col-12 col-sm-6">
+                                <div class="stats-block">
+                                    <img src="{% static 'img/stat1.svg' %}" alt="">
+                                    <p class="stats-subheader">Всего случаев:</p>
+                                    <div class="counter">
+                                        <p>{{ total_cases }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 rec">
+                                <div class="stats-block rec">
+                                    <img src="{% static 'img/stat2.svg' %}" alt="">
+                                    <p class="stats-subheader">Выздоровлений:</p>
+                                    <div class="counter">
+                                        <p>{{ total_recovered }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-12 col-sm-6">
+                                <div class="stats-block">
+                                    <img src="{% static 'img/stat3.svg' %}" alt="">
+                                    <p class="stats-subheader">Смертей:</p>
+                                    <div class="counter">
+                                        <p>{{ total_deaths }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm">
+                                <div class="stats-block">
+                                    <img src="{% static 'img/stat1.svg' %}" alt="">
+                                    <p class="stats-subheader">Случаев за сутки:</p>
+                                    <div class="counter stat-new">
+                                        <p>+<span class="stats-new">{{ new_cases }}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm">
+                                <div class="stats-block">
+                                    <img src="{% static 'img/stat3.svg' %}" alt="">
+                                    <p class="stats-subheader">Смертей за сутки:</p>
+                                    <div class="counter stat-new">
+                                        <p>+<span class="stats-new">{{ new_deaths }}</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-3">
+            <div class="container">
+                <div class="history">
+                    <div class="history-text">
+                        <h1>История коронавируса</h1>
+                    </div>
+                    <div class="history-content">
+                        <h3>Версии появления</h3>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp;Существует несколько версий того, как коронавирусная инфекция появилась и распространилась по всей планете. Начнём с того, что первый случай был зарегистрирован на территории Китая, в городе Ухань. В городе есть большой рынок, на котором продаются разные деликатесы, горячо любимые китайцами. <br /><br />&nbsp;&nbsp;&nbsp;&nbsp;Первая версия гласит, что коронавирус зародился среди животных и уже на самом рынке, посредством передачи инфекции между животными, мутировал и передался человеку. Этой версии придерживается и правительство Китая. </p>
+                        <div class="history-img"><img src="{% static 'img/history1.jpg' %}" alt=""></div>
+                        <p> &nbsp;&nbsp;&nbsp;&nbsp; Вторая версия заключается в обвинении сотрудников УИВ - Уханьского института вирусологии. Институт находится недалеко от рынка, на котором были диагностированы первые случаи заболевания, так что было выражено мнение, что произошла утечка биологического материала из лаборатории, что и повлекло за собой пандемию в Китае, а потом - в мире.</p>
+                        <div class="history-img"><img src="{% static 'img/history2.jpg' %}" alt=""></div>
+                        <p>&nbsp;&nbsp;&nbsp;&nbsp; Некоторые придерживаются мнения, что всё это всемирный заговор и попытка искусственно сократить население мира, но это лишь догадки, никак не подтверждённые реальными фактами.</p>
+                        <h3>Первые случаи</h3>
+                        <p>
+                            Первый диагноз был поставлен аж 31 декабря 2019 года, тогда как люди с очень схожими симптомами попадали в больницу начиная с 8 декабря того же года. С 1 января 2020 года власти начали вводить карантин, сначала локальный, потом - повсеместный. Уже спустя две недели власти Китая признали, что удержать вирус не удалось, несмотря на принятые меры безопасности. Многие страны ввели обязательный температурный контрлоль при въезде в страну. Уже к концу месяца вирус был замечен в многих уголках планеты, что позволило ВОЗ объявить пандемию SARC-COV-2.
+                        </p>
+                        <div class="history-img">
+                            <video autoplay muted loop id="v1">
+                                <source src="{% static 'img/china-vid.webm.480p.vp9.webm' %}" type="video/webm">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-4">
+            <div class="container">
+                <div class="way">
+                    <div class="way-text">
+                        <h1>Способы передачи коронавируса</h1>
+                    </div>
+                    <div class="way-content">
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <div class="way-block">
+                                    <div class="way-wrap">
+                                        <img src="{% static 'img/way1.svg' %}" alt="">
+                                        <h2>Воздушно-капельным путём</h2>
+                                        <p>Микрокапельки воды, которые буквально извергаются из больного при чихании, содержат в себе коронавирусную инфекцию. Надышавшись таким воздухом, человек почти на 100% будет заражён</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="way-block">
+                                    <div class="way-wrap">
+                                        <img src="{% static 'img/way2.svg' %}" alt="">
+                                        <h2>Через поверхности</h2>
+                                        <p>Доказано, что вирус может жить на поверхностях различных предметов до нескольких часов. На металле и пластике вирус может выживать до 2-3 дней. Это позволяет коронавирусу распространяться даже через рукопожатия.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="way-block">
+                                    <div class="way-wrap">
+                                        <img src="{% static 'img/way3.svg' %}" alt="">
+                                        <h2>Через кровь</h2>
+                                        <p>Как и большинство иных вирусов, коронавирус может передаваться через различные жидкости организма человека. Таковыми есть кровь и слюна. Заражение может произойти во время повторного использования медицинских инструментов без их предварительной дезинфекции.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="way-block">
+                                    <div class="way-wrap">
+                                        <img src="{% static 'img/way4.svg' %}" alt="">
+                                        <h2>Через кошек</h2>
+                                        <p>Доказано, что семейство кошачьих могут быть заражены коронавирусом и также передавать его остальным особям своего вида и также людям. Рекомендуется избегать контактов с бездомными кошками.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-5">
+            <div class="container">
+                <div class="symp">
+                    <div class="symp-text">
+                        <h1>Симптоматика коронавируса</h1>
+                        <p>Внимание! Если вы обнаружите у себя подобные симптомы, мы настоятельно рекомендуем вам <a href="tel:103" class="med-tel">обратиться за медицинской помощью</a> и минимизировать контакты с другими людьми до приезда мед. работников</p>
+                    </div>
+                    <div class="symp-content">
+                        <div class="row">
+                            <div class="col-12 col-sm">
+                                <div class="symp-wrap">
+                                    <div class="symp-block">
+                                        <img src="{% static 'img/symp1.svg' %}" alt="">
+                                        <h2>Повышение температуры тела</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm col-12">
+                                <div class="symp-wrap">
+                                    <div class="symp-block">
+                                        <img src="{% static 'img/symp2.svg' %}" alt="">
+                                        <h2>Сухой кашель</h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm col-12">
+                                <div class="symp-wrap">
+                                    <div class="symp-block">
+                                        <img src="{% static 'img/symp3.svg' %}" alt="">
+                                        <h2>Продолжительная усталость</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="symp-block-sm">
+                            <h4>Также инфицирование коронавирусом может сопровождаться такими симптомами:</h4>
+                            <p>- боль в горле</p>
+                            <p>- головная боль</p>
+                            <p>- потеря обоняния и вкусовых ощущений</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-6">
+            <div class="container">
+                <div class="dang">
+                    <div class="dang-text">
+                        <h1>Осложнения коронавируса</h1>
+                    </div>
+                    <div class="dang-content">
+                        <h3>К чему приводит "затянувшийся" коронавирус?</h3>
+                        <p>В большинстве случаев заболевание протекает в лёгкой или средней форме, но в некоторых случаях коронавирус вызывает сильные воспалительные процессы, которые в итоге могут привести к смертельной пневмонии. Из-за долгого присутствия в организме человека, вирус вызывает воспалительные процессы. В основном затрагиваются такие системы: <br /><br />
+                            <span class="dang-span">- сердечно-сосудистая (острая сердечная недостаточность, диссеминированное внутрисосудистое свёртывание);</span><br />
+                        </p>
+                        <div class="dang-img">
+                            <img src="{% static 'img/dang1.jpg' %}" alt="">
+                        </div>
+                        <p>
+                            <span class="dang-span">- мочевыделительная система (острая почечная недостаточность);</span>
+                        </p>
+                        <div class="dang-img">
+                            <img src="{% static 'img/dang2.jpg' %}" alt="">
+                        </div>
+                        <p>
+                            <span class="dang-span">
+                                - дыхательная система (острый респираторный дистресс-синдром, острая дыхательная недостаточность).
+                            </span>
+                        </p>
+                        <div class="dang-img">
+                            <img src="{% static 'img/dang3.jpg' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-7">
+            <div class="container">
+                <div class="prof">
+                    <div class="prof-text">
+                        <h1>Профилактика коронавируса</h1>
+                    </div>
+                    <div class="prof-content">
+                        <h3>Чтобы избежать заражения коронавирусом, следуйте простым правилам:</h3>
+                        <div class="row">
+                            <div class="col-lg-6 col-12">
+                                <div class="prof-block">
+                                    <div class="p-wrap">
+                                        <img src="{% static 'img/prof1.svg' %}" alt="">
+                                        <h4>Обработка рук</h4>
+                                        <p>Мы постоянно касаемся руками к многим поверхностям, на которых может обитать вирус, а следом - трогаем лицо, нос, губы и т.д. Вирус попадает на слизистую и человек заражается. Для предотвращения данной ситуации нужно как можно реже трогать руками лицо и как можно чаще обрабатывать руки с мылом или с антисептиком.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="prof-block">
+                                    <div class="p-wrap">
+                                        <img src="{% static 'img/prof2.svg' %}" alt="">
+                                        <h4>Избегать контакта с людьми с признаками ОРВИ</h4>
+                                        <p>Если вы вынуждены покидать свой дом, то нужно избегать контакта с людьми, которые имеют признаки ОРВИ. Стоит обходить чихающих\кашляющих людей на улицах, держать соц. дистанцию и, разумеется, надевать маску, желательно при выходе из дому.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="prof-block">
+                                    <div class="p-wrap">
+                                        <img src="{% static 'img/prof3.svg' %}" alt="">
+                                        <h4>Обработка продуктов питания</h4>
+                                        <p>Если вы собираетесь употреблять продукты, которые не были упакованы в магазине, то следует проводить их термическую обработку или обработку водой. Например, для фруктов будет достаточно промывки над горячей водой, а вот сырое мясо или сырые яйца обязательно нужно сварить или пожарить.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-12">
+                                <div class="prof-block">
+                                    <div class="p-wrap">
+                                        <img src="{% static 'img/prof4.svg' %}" alt="">
+                                        <h4>Придерживаться режима самоизоляции</h4>
+                                        <p>Самое простое правило - минимизация времени нахождения на улице. Это поможет избежать заражения от незнакомых людей воздушно-капельным путём. Нужно воздержаться от прогулок, ограничиваясь лишь походами на работу, учёбу или в магазин.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="container">
+                <div class="source">
+                    <div class="source-text">
+                        <h1>Источники информации</h1>
+                    </div>
+                    <div class="source-content">
+                        <div class="row">
+                            <div class="col source-block"><a href="https://moz.gov.ua/"><img src="{% static 'img/source1.png' %}" alt="" class="i1"></a></div>
+                            <div class="col source-block"><a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019"><img src="{% static 'img/source2.png' %}" alt="" class="i2"></a></div>
+                            <div class="col source-block"><a href="https://en.wikipedia.org/wiki/Coronavirus"><img src="{% static 'img/source3.png' %}" alt="" class="i3"></a></div>
+                            <div class="col source-block"><a href="https://www.worldometers.info/coronavirus/"><img src="{% static 'img/source4.png' %}" alt="" class="i4"></a></div>
+                        </div>
+                        <p class="rights">Все права сохранены</p>
+                        <p class="devs">CHUCHMAN United dev. studio</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body></html>
