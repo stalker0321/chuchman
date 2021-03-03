@@ -1,1 +1,1 @@
-web: gunicorn chuchman.wsgi --log-file -
+web: gunicorn chuchman.wsgi:application --log-file -
