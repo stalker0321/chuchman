@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -63,7 +64,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'chuchman.urls'
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
-print(BASE_DIR)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -82,6 +82,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'chuchman.wsgi.application'
 
+os.environ['DJANGO_SETTINGS_MODULE'] = 'chuchman.settings'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -133,7 +134,7 @@ USE_TZ = True
 # print(PROJECT_ROOT)
 
 
-
+print(sys.path)
 
 
 
