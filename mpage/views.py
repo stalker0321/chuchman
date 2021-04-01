@@ -6,15 +6,6 @@ from bs4 import BeautifulSoup
 import requests
 
 
-def ssss(request):
-    template = loader.get_template('mpage/index.html')
-    # return HttpResponse(template.render())
-
-
-
-
-
-
 def index():
     STATISTIC = 'https://www.worldometers.info/coronavirus/'
     headers = {
@@ -24,7 +15,6 @@ def index():
     convert = soup.findAll('tbody')
     convert = convert[0]
     convert = soup.findAll('tr')
-
 
     info = {}
 
@@ -44,36 +34,35 @@ def index():
                 if i == 1 or i == 7 or i == 9 or i == 10 or i == 11:
                     continue
 
-                ggg = stat[i].text
-                ggg = ggg.replace(' ', '')
-                ggg = ggg.replace('N/A', '')
-                ggg = ggg.replace(',', '')
-                ggg = ggg.replace('+', '')
+                temp = stat[i].text
+                temp = temp.replace(' ', '')
+                temp = temp.replace('N/A', '')
+                temp = temp.replace(',', '')
+                temp = temp.replace('+', '')
                 if g == 8 and i == 11:
-                    ggg = stat[i].text
-                    pp = ggg.find('.')
-                    ggg = ggg[0: pp]
+                    temp = stat[i].text
+                    pp = temp.find('.')
+                    temp = temp[0: pp]
 
                 try:
-                    ggg = int(ggg)
+                    temp = int(temp)
                 except Exception:
                     pass
 
-
                 if i == 2:
-                    stat_2 = ggg
+                    stat_2 = temp
                 elif i == 3:
-                    stat_3 = ggg
+                    stat_3 = temp
                 elif i == 4:
-                    stat_4 = ggg
+                    stat_4 = temp
                 elif i == 5:
-                    stat_5 = ggg
+                    stat_5 = temp
                 elif i == 6:
-                    stat_6 = ggg
+                    stat_6 = temp
                 elif i == 8:
-                    stat_8 = ggg
+                    stat_8 = temp
                 elif i == 12:
-                    stat_12 = ggg
+                    stat_12 = temp
         g += 1
 
     info = {
@@ -86,23 +75,34 @@ def index():
         'active_cases': stat_8,
         'total_tests': stat_12, }
 
-
     return info
-	
+
 
 def page_ru(request):
-	info = index()
-	
-	return render(request, 'mpage/index.html', context=info)
+    info = index()
+    return render(request, 'mpage/index.html', context=info)
 
 
 def page_ua(request):
-	info = index()
-	return render(request, 'mpage/index-ua.html', context=info)
+    info = index()
+    return render(request, 'mpage/index-ua.html', context=info)
+
 
 def page_en(request):
-	info = index()
-	return render(request, 'mpage/index-en.html', context=info)
-	
-	return render(request, 'mpage/index.html', context=info)
-	
+    info = index()
+    return render(request, 'mpage/index-en.html', context=info)
+
+
+def page_ru_ch(request):
+    info = index()
+    return render(request, 'mpage/index-ru-ch.html', context=info)
+
+
+def page_en_ch(request):
+    info = index()
+    return render(request, 'mpage/index-en-ch.html', context=info)
+
+
+def page_ua_ch(request):
+    info = index()
+    return render(request, 'mpage/index-ua-ch.html', context=info)

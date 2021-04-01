@@ -21,6 +21,9 @@ from mpage import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.page_ru),
-	path('en/', views.page_en),
-	path('ua/',views.page_ua),
+    path('en/', views.page_en),
+    path('ua/', views.page_ua),
+    path('child/', views.page_ru),
+    path('en/child/', views.page_en),
+    path('ua/child/', views.page_ua),
 ]

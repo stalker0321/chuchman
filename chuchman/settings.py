@@ -12,10 +12,12 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-import django_heroku
+import sys
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+# BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
@@ -45,14 +47,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'whitenoise.storage.CompressedManifestStaticFilesStorage',
+
 ]
 
 WHITENOISE_USE_FINDERS = True
@@ -62,7 +64,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ROOT_URLCONF = 'chuchman.urls'
 
 TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -81,14 +82,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'chuchman.wsgi.application'
 
+os.environ['DJANGO_SETTINGS_MODULE'] = 'chuchman.settings'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR + 'db.sqlite3'),
     }
 }
 
@@ -125,24 +128,32 @@ USE_L10N = True
 
 USE_TZ = True
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# print(BASE_DIR)
+# PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+# print(PROJECT_ROOT)
+
+
+print(sys.path)
+
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_ROOT = os.path.join(BASE_DIR + '/mpage/', 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
 
-
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR + '/mpage/', "static"),
+    os.path.join(BASE_DIR, 'mpage', "static"),
 )
+
 
 
 TEMPLATES_URL = '/templates/'
 
 TEMPLATESFILES_DIRS = [
-    os.path.join(BASE_DIR, "templates"),
+    os.path.join(BASE_DIR, 'mpage', "templates"),
 ]
 
-django_heroku.settings(locals())
