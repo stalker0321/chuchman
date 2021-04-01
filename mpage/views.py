@@ -80,7 +80,6 @@ def index():
 
 def page_ru(request):
     info = index()
-
     return render(request, 'mpage/index.html', context=info)
 
 
@@ -93,6 +92,17 @@ def page_en(request):
     info = index()
     return render(request, 'mpage/index-en.html', context=info)
 
-def aaa(request):
+
+def page_ru_ch(request):
     info = index()
-    return render(request, 'mpage/index.html', context=info)
+    return render(request, 'mpage/index-ru-ch.html', context=info)
+
+
+def page_en_ch(request):
+    info = index()
+    return render(request, 'mpage/index-en-ch.html', context=info)
+
+
+def page_ua_ch(request):
+    info = index()
+    return render(request, 'mpage/index-ua-ch.html', context=info)
