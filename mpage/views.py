@@ -5,6 +5,7 @@ from django.template import loader
 from bs4 import BeautifulSoup
 import requests
 
+
 def index():
     STATISTIC = 'https://www.worldometers.info/coronavirus/'
     headers = {
@@ -14,7 +15,6 @@ def index():
     convert = soup.findAll('tbody')
     convert = convert[0]
     convert = soup.findAll('tr')
-
 
     info = {}
 
@@ -49,7 +49,6 @@ def index():
                 except Exception:
                     pass
 
-
                 if i == 2:
                     stat_2 = temp
                 elif i == 3:
@@ -76,23 +75,24 @@ def index():
         'active_cases': stat_8,
         'total_tests': stat_12, }
 
-
     return info
-	
+
 
 def page_ru(request):
-	info = index()
-	
-	return render(request, 'mpage/index.html', context=info)
+    info = index()
+
+    return render(request, 'mpage/index.html', context=info)
 
 
 def page_ua(request):
-	info = index()
-	return render(request, 'mpage/index-ua.html', context=info)
+    info = index()
+    return render(request, 'mpage/index-ua.html', context=info)
+
 
 def page_en(request):
-	info = index()
-	return render(request, 'mpage/index-en.html', context=info)
-	
-	return render(request, 'mpage/index.html', context=info)
-	
+    info = index()
+    return render(request, 'mpage/index-en.html', context=info)
+
+def aaa(request):
+    info = index()
+    return render(request, 'mpage/index.html', context=info)
