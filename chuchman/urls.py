@@ -24,7 +24,7 @@ urlpatterns = [
     path('ru/', views.page_ru),
     path('en/', views.page_en),
     path('ua/', views.page_ua),
-    path('ru/child/', views.page_ru_ch),
-    path('en/child/', views.page_en_ch),
-    path('ua/child/', views.page_ua_ch),
+    path('ru-child/', views.page_ru_ch),
+    path('en-child/', views.page_en_ch),
+    path('ua-child/', views.page_ua_ch),
 ]
