@@ -80,7 +80,7 @@ def index():
 
 def page_ru(request):
     info = index()
-    return render(request, 'mpage/index.html', context=info)
+    return render(request, 'mpage/index-ru.html', context=info)
 
 
 def page_ua(request):
